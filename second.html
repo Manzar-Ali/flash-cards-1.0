@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flashcards for Words Ending with ":" and 5 Words After</title>
+	<link rel="stylesheet" href="/css/style2.css">
+	<!-- icon -->
+	<link rel="icon" href="/public/flashcard.png" type="image/png">
+</head>
+<body>
+	<nav>
+		<div><a href="index.html">Single Cards</a></div>
+		<div><a href="second.html">Text to Cards</a></div>
+		<div><a href="third.html">File to Cards</a></div>
+	  </nav>
+	<div id="input-section">
+		<h1>Convert Text into Flashcards</h1>	
+		<textarea id="myTextarea" placeholder="Type something here"></textarea>
+		<button id="generate" onclick="createFlashcards()">Create Flashcards</button>
+		<div class="container" id="flashcards"></div>
+	</div>
+
+	<script>
+		function createFlashcards() {
+			// Get the value of the textarea
+			var text = document.getElementById("myTextarea").value;
+
+			// Split the text into an array of words
+			var words = text.split(" ");
+
+			// Find the words that end with ":" and the 5 words after them using a for loop
+			var matchingWords = [];
+			for (var i = 0; i < words.length; i++) {
+				if (words[i].endsWith(":")) {
+					var matchingWord = words[i];
+					var fiveWordsAfter = words.slice(i + 1, i + 21).join(" ");
+					matchingWords.push([matchingWord, fiveWordsAfter]);
+				}
+			}
+
+			// Create flashcards for the matching words and their corresponding definitions
+			var flashcardsHTML = "";
+			for (var j = 0; j < matchingWords.length; j++) {
+				var term = matchingWords[j][0];
+				var definition = matchingWords[j][1];
+				flashcardsHTML += "<div class='card'>";
+				flashcardsHTML += "<div class='term'>" + term + "</div>";
+				flashcardsHTML += "<div class='definition'>" + definition + "</div>";
+				flashcardsHTML += "</div>";
+			}
+
+			// Display the flashcards in the flashcards div
+			document.getElementById("flashcards").innerHTML = flashcardsHTML;
+
+            // Load the flashcards from local storage on page load
+		    window.onload = function() {
+			var flashcardsHTML = localStorage.getItem("flashcards");
+			if (flashcardsHTML) {
+				document.getElementById("flashcards").innerHTML = flashcardsHTML;
+			}
+		};
+		}
+	</script>
+</body>
+</html>

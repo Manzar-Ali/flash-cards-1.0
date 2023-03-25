@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcard App</title>
+    <!-- icon  -->
+    <link rel="icon" href="/public/flashcard.png" type="image/png">
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      h1{
+        font-size: 24px;
+			  color: #4c4c4c;
+			 margin-top: 100px;
+       text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div><a href="index.html">Single Cards</a></div>
+      <div><a href="second.html">Text to Cards</a></div>
+      <div><a href="third.html">File to Cards</a></div>
+    </nav>
+    <h1>Create your flash card</h1>
+    <div class="container">
+      <div class="add-flashcard-con">
+      
+        <button id="add-flashcard">Add Flashcard</button>
+      </div>
+
+      <!-- Display Card of Question And Answers Here -->
+      <div id="card-con">
+        <div class="card-list-container"></div>
+      </div>
+    </div>
+
+    <!-- Input form for users to fill question and answer -->
+    <div class="question-container hide" id="add-question-card">
+      <h2>Add Flashcard</h2>
+      <div class="wrapper">
+        <!-- Error message -->
+        <div class="error-con">
+          <span class="hide" id="error">Input fields cannot be empty!</span>
+        </div>
+        <!-- Close Button -->
+        <i class="fa-solid fa-xmark" id="close-btn"></i>
+      </div>
+
+      <label for="question">Question:</label>
+      <textarea
+        class="input"
+        id="question"
+        placeholder="Type the question here..."
+        rows="2"
+      ></textarea>
+      <label for="answer">Answer:</label>
+      <textarea
+        class="input"
+        id="answer"
+        rows="4"
+        placeholder="Type the answer here..."
+      ></textarea>
+      <button id="save-btn">Save</button>
+    </div>
+
+    <!-- Script -->
+    <script src="/js/script.js"></script>
+  </body>
+</html>
